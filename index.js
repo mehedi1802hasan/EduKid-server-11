@@ -30,12 +30,21 @@ async function run() {
     await client.connect();
 
     const addToyCollection=client.db('eduToys').collection('addToys')
+
+// 1. post from addToys  
   app.post('/addToys',async(req,res)=>{
     const addToy=req.body;
     console.log(addToy);
     const result=await addToyCollection.insertOne(addToy);
     res.send(result)
   })
+
+  // 2. get for all toys
+   app.get('/addToys',async(req,res)=>{
+    const cursor=addToyCollection.find();
+    const result=await cursor.toArray();
+    res.send(result);
+   })
 
 
     // Send a ping to confirm a successful connection
