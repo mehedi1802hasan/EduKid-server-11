@@ -61,6 +61,30 @@ async function run() {
   const result=await addToyCollection.deleteOne(query);
   res.send(result)
  })
+ 
+ //4 . update id ways in myToys.
+ app.put('/updateToy/:id',async(req,res)=> {
+
+  const id=req.params.id;
+  const body=req.body;
+  const filter={_id: new ObjectId (id)};
+  const updateDoc={
+    $set:{     
+      productName:body.productName,
+      sellerName:body.sellerName,
+      sellerEmail:body.sellerEmail,
+      imgUrl:body.imgUrl,
+      price:body.price,
+      rating:body.rating,
+      quantity:body.quantity,
+      subCategory:body.subCategory,
+      description:body.description
+    },
+  };
+  const result=await addToyCollection.updateOne(filter,updateDoc);
+  res.send(result)
+})
+
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
