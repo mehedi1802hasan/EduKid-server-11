@@ -104,7 +104,7 @@ async function run() {
         const result = await addToyCollection
           .find({
             $or: [
-              { productName: { $regex: searchText, $options: 'i' } },
+            
               { subCategory: { $regex: searchText, $options: 'i' } },
             ],
           })
