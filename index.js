@@ -66,14 +66,9 @@ async function run() {
       const filter = { _id: new ObjectId(id) };
       const updateDoc = {
         $set: {
-          productName: body.productName,
-          sellerName: body.sellerName,
-          sellerEmail: body.sellerEmail,
-          imgUrl: body.imgUrl,
+        
           price: body.price,
-          rating: body.rating,
           quantity: body.quantity,
-          subCategory: body.subCategory,
           description: body.description,
         },
       };
