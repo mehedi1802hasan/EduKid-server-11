@@ -32,6 +32,7 @@ async function run() {
     // 1. POST to addToys
     app.post('/addToys', async (req, res) => {
       const addToy = req.body;
+   //   body.createdAt = new Date()
       const result = await addToyCollection.insertOne(addToy);
       res.send(result);
     });
@@ -47,7 +48,8 @@ async function run() {
     app.get('/myToys/:email', async (req, res) => {
       const result = await addToyCollection
         .find({ sellerEmail: req.params.email })
-        .toArray();
+     //   .sort({createdAt: -});
+        .toArray()
       res.send(result);
     });
 
